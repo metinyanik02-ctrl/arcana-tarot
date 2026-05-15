@@ -63,9 +63,19 @@
 @media (max-width: 880px) {
   .daily {
     grid-template-columns: 1fr;
+    padding: var(--s-5);
   }
   .daily-card-wrap {
     width: 220px;
     margin: 0 auto;
+  }
+  #daily.section {
+    padding: var(--s-6) 0;
+  }
+  #daily .section-head {
+    margin-bottom: var(--s-5);
+  }
+  .daily-actions {
+    margin-top: var(--s-5);
   }
 }
