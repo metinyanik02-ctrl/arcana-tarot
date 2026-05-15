@@ -1,0 +1,82 @@
+.ds-intro { max-width: 560px; }
+
+.ds-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--s-5);
+}
+
+.swatch {
+  aspect-ratio: 4 / 5;
+  border-radius: 3px;
+  padding: var(--s-4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+.swatch .sw-name {
+  font-family: var(--font-caps);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+.swatch .sw-hex {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+}
+
+.ds-type-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 48px;
+  margin-top: 64px;
+  padding-top: 48px;
+  border-top: 1px solid var(--line);
+}
+
+.ds-type-label { margin-bottom: 18px; }
+
+.ds-specimen-display {
+  font-size: 72px;
+  line-height: 1;
+  font-style: italic;
+  font-family: var(--font-display);
+}
+.ds-specimen-quote {
+  margin-top: 12px;
+  font-style: italic;
+  font-size: 22px;
+}
+
+.ds-specimen-caps {
+  font-family: var(--font-caps);
+  font-size: 24px;
+  letter-spacing: 0.2em;
+}
+.ds-specimen-note {
+  margin-top: 18px;
+  font-size: 16px;
+}
+
+.ds-glyphs {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-size: 32px;
+  color: var(--gold);
+}
+.ds-glyphs-zodiac {
+  font-size: 24px;
+  color: var(--gold-soft);
+  gap: 12px;
+  margin-top: 12px;
+}
+
+@media (max-width: 880px) {
+  .ds-grid { grid-template-columns: repeat(2, 1fr); }
+}

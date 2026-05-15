@@ -1,0 +1,257 @@
+/* ─── Tarot Card ─────────────────────────────────────────────── */
+.card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 5 / 8.6;
+  perspective: 1200px;
+  cursor: pointer;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 1.1s cubic-bezier(0.7, 0, 0.3, 1);
+  transform-style: preserve-3d;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Hover lift — unflipped */
+.card:hover .card-inner {
+  transform: translateY(-4px) rotateX(2deg);
+}
+/* Hover lift — flipped (must keep rotateY) */
+.card.flipped:hover .card-inner {
+  transform: translateY(-4px) rotateY(180deg) rotateX(2deg);
+}
+
+/* Reversed: rotate only the art, not the whole card */
+.card.reversed .card-face-front .card-art-wrap {
+  transform: rotate(180deg);
+}
+
+/* ─── Shared face styles ─────────────────────────────────────── */
+.card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(201, 169, 110, 0.08), transparent 60%),
+    linear-gradient(180deg, #15101e 0%, #0c0814 100%);
+  border: 1px solid var(--line);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.4) inset,
+    0 30px 60px -20px rgba(0, 0, 0, 0.6),
+    0 8px 24px -8px rgba(0, 0, 0, 0.5);
+}
+
+/* Front face: pre-rotated 180°, revealed when .card-inner rotates */
+.card-face-front {
+  transform: rotateY(180deg);
+}
+
+/* ─── Front face anatomy ─────────────────────────────────────── */
+.card-frame {
+  position: absolute;
+  inset: 8px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 12px 12px;
+}
+
+/* Corner brackets: top-left + bottom-right via pseudo-elements */
+.card-frame::before,
+.card-frame::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--line-2);
+}
+.card-frame::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+.card-frame::after  { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
+
+/* Remaining two corners via .card-corners children */
+.card-corners {
+  position: absolute;
+  inset: 8px;
+  pointer-events: none;
+}
+.card-corners > span {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--line-2);
+}
+.card-corners > span:nth-child(1) { top: -1px; right: -1px; border-left: 0; border-bottom: 0; }
+.card-corners > span:nth-child(2) { bottom: -1px; left: -1px; border-right: 0; border-top: 0; }
+
+/* Top/bottom inscription rows */
+.card-top,
+.card-bot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-caps);
+  letter-spacing: 0.2em;
+  font-size: 9px;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.card-top .roman  { font-size: 11px; letter-spacing: 0.15em; }
+.card-top .suit-tag { color: var(--gold-deep); }
+.card-bot { transform: rotate(180deg); }
+
+/* Art area */
+.card-art-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 6px 0;
+  transition: transform 0.9s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.card-art {
+  width: 78%;
+  aspect-ratio: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Outer and inner rings */
+.ring-outer,
+.ring-inner {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--line-2);
+  border-radius: 50%;
+}
+.ring-inner {
+  inset: 12%;
+  border-style: dashed;
+  opacity: 0.6;
+}
+
+/* Astrolabe tick marks via conic-gradient + radial mask */
+.ticks {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+.ticks::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg,
+    var(--gold-deep) 0 1deg,   transparent 1deg 30deg,
+    var(--gold-deep) 30deg 31deg, transparent 31deg 60deg,
+    var(--gold-deep) 60deg 61deg, transparent 61deg 90deg,
+    var(--gold-deep) 90deg 91deg, transparent 91deg 120deg,
+    var(--gold-deep) 120deg 121deg, transparent 121deg 150deg,
+    var(--gold-deep) 150deg 151deg, transparent 151deg 180deg,
+    var(--gold-deep) 180deg 181deg, transparent 181deg 210deg,
+    var(--gold-deep) 210deg 211deg, transparent 211deg 240deg,
+    var(--gold-deep) 240deg 241deg, transparent 241deg 270deg,
+    var(--gold-deep) 270deg 271deg, transparent 271deg 300deg,
+    var(--gold-deep) 300deg 301deg, transparent 301deg 330deg,
+    var(--gold-deep) 330deg 331deg, transparent 331deg 360deg
+  );
+  mask: radial-gradient(circle, transparent 47%, #000 47%, #000 50%, transparent 50%);
+  -webkit-mask: radial-gradient(circle, transparent 47%, #000 47%, #000 50%, transparent 50%);
+  opacity: 0.6;
+}
+
+/* Central astrological / element glyph */
+.card-glyph {
+  font-size: clamp(28px, 6.5vw, 64px);
+  color: var(--gold);
+  text-shadow:
+    0 0 24px rgba(201, 169, 110, 0.5),
+    0 0 60px rgba(201, 169, 110, 0.2);
+  font-family: var(--font-display);
+  line-height: 1;
+  position: relative;
+  z-index: 2;
+  /* Force text presentation — prevent OS emoji color rendering */
+  font-variant-emoji: text;
+}
+
+/* Card name */
+.card-name {
+  font-family: var(--font-display);
+  font-style: italic;
+  text-align: center;
+  font-size: 14px;
+  color: var(--parchment);
+  margin-top: 4px;
+  margin-bottom: 2px;
+  line-height: 1.1;
+  padding: 0 4px;
+  letter-spacing: 0.01em;
+}
+
+/* Suit ornament SVG (positioned inside .card-art) */
+.suit-ornament {
+  position: absolute;
+  width: 60%;
+  opacity: 0.5;
+}
+
+/* ─── Back face ──────────────────────────────────────────────── */
+.card-back-art {
+  position: absolute;
+  inset: 8px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(201, 169, 110, 0.18), transparent 60%),
+    linear-gradient(135deg, #1a1028 0%, #0d0816 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.card-back-art::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(45deg, rgba(201, 169, 110, 0.08) 0 1px, transparent 1px 14px),
+    repeating-linear-gradient(-45deg, rgba(201, 169, 110, 0.08) 0 1px, transparent 1px 14px);
+  opacity: 0.5;
+}
+
+.card-back-mark {
+  position: relative;
+  width: 56%;
+  aspect-ratio: 1;
+  border: 1px solid var(--line-2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 32px;
+  font-family: var(--font-display);
+}
+.card-back-mark::before,
+.card-back-mark::after {
+  content: "";
+  position: absolute;
+  border: 1px solid var(--line-2);
+  border-radius: 50%;
+}
+.card-back-mark::before { inset: -10%; opacity: 0.5; }
+.card-back-mark::after  { inset: 14%; border-style: dashed; opacity: 0.5; }

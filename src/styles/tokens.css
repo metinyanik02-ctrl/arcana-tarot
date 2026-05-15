@@ -1,0 +1,43 @@
+/* ─────────────────────────────────────────────────────────────
+   ARCANA — Design Tokens
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  /* Core palette */
+  --ink:         #07050d;
+  --ink-2:       #0d0916;
+  --void:        #120a1f;
+  --plum:        #2a1438;
+  --plum-2:      #3a1a4a;
+  --gold:        #c9a96e;
+  --gold-soft:   #b8975a;
+  --gold-deep:   #8a6f3e;
+  --parchment:   #e8dcc0;
+  --parchment-2: #d4c4a0;
+  --bone:        #f0e6cf;
+  --blood:       #6b1f2a;
+
+  /* Functional */
+  --bg:        var(--ink);
+  --surface:   rgba(255, 246, 220, 0.04);
+  --surface-2: rgba(255, 246, 220, 0.07);
+  --line:      rgba(201, 169, 110, 0.22);
+  --line-2:    rgba(201, 169, 110, 0.4);
+  --text:      var(--parchment);
+  --text-dim:  rgba(232, 220, 192, 0.62);
+  --text-mute: rgba(232, 220, 192, 0.38);
+
+  /* Typography */
+  --font-display: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+  --font-body:    "Cormorant Garamond", Georgia, serif;
+  --font-caps:    "Cinzel", "Cormorant Garamond", serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, monospace;
+
+  /* Spacing scale */
+  --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px; --s-5: 24px;
+  --s-6: 32px; --s-7: 48px; --s-8: 64px; --s-9: 96px; --s-10: 128px;
+
+  /* Radii */
+  --radius:      2px;
+  --card-radius: 6px;
+}

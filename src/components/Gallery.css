@@ -1,0 +1,32 @@
+.gallery-sub {
+  max-width: 560px;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: var(--s-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--s-7);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--s-5);
+}
+
+.gallery-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+.card-label {
+  text-align: center;
+  font-family: var(--font-caps);
+  font-size: 9px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}

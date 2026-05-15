@@ -1,0 +1,51 @@
+.hero {
+  position: relative;
+  padding: var(--s-9) 0 var(--s-8);
+  text-align: center;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  gap: var(--s-3);
+  align-items: center;
+  margin-bottom: var(--s-5);
+}
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+  content: "";
+  width: 40px;
+  height: 1px;
+  background: var(--line-2);
+}
+
+.hero h1 {
+  font-style: italic;
+  font-weight: 300;
+  background: linear-gradient(180deg, var(--bone) 0%, var(--gold-soft) 50%, var(--gold-deep) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 60px rgba(201, 169, 110, 0.15));
+}
+
+.hero-sub {
+  max-width: 540px;
+  margin: var(--s-5) auto 0;
+  color: var(--text-dim);
+  font-size: 20px;
+  font-style: italic;
+}
+
+.hero-ornament {
+  font-family: var(--font-caps);
+  letter-spacing: 0.8em;
+  color: var(--gold);
+  font-size: 14px;
+  margin-top: var(--s-6);
+  opacity: 0.7;
+}

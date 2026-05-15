@@ -1,0 +1,35 @@
+.lexikon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px 48px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.lexikon-entry { margin: 0; }
+
+.lexikon-term {
+  font-family: var(--font-caps);
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lexikon-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.lexikon-def {
+  font-size: 17px;
+  line-height: 1.5;
+}
