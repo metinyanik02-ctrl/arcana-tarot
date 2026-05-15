@@ -63,19 +63,26 @@
 @media (max-width: 880px) {
   .daily {
     grid-template-columns: 1fr;
-    padding: var(--s-5);
+    padding: var(--s-4);
+    gap: var(--s-4);
   }
   .daily-card-wrap {
-    width: 220px;
+    width: 160px;
     margin: 0 auto;
   }
   #daily.section {
-    padding: var(--s-6) 0;
+    padding: var(--s-5) 0;
   }
   #daily .section-head {
-    margin-bottom: var(--s-5);
+    margin-bottom: var(--s-4);
+  }
+  .daily-meaning {
+    display: none;
+  }
+  .daily-meta {
+    margin-top: var(--s-3);
   }
   .daily-actions {
-    margin-top: var(--s-5);
+    margin-top: var(--s-4);
   }
 }
